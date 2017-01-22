@@ -1,2 +1,2 @@
-# MkfThgsIx_Project0
+# MkgThgsIx_Project0
 Project 0 of the Making Things Interactive Course - Spring 2017
