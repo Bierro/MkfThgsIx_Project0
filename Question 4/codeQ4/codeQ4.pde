@@ -1,5 +1,5 @@
 //Radius of our circles
-int circleRadius = 100;
+int circleRadius = 50;
 //Positions of our circles
 int circle1X, circle1Y, circle2X, circle2Y, circle3X, circle3Y;
 //Easing percentages for the two first circles' movement
@@ -34,11 +34,11 @@ void draw() {
     circle3Y = height / 2;
     
     fill(c1);
-    ellipse(circle1X, circle1Y, circleRadius, circleRadius);
+    ellipse(circle1X, circle1Y, 2 * circleRadius, 2 * circleRadius);
     fill(c2);
-    ellipse(circle2X, circle2Y, circleRadius, circleRadius);
+    ellipse(circle2X, circle2Y, 2 * circleRadius, 2 * circleRadius);
     fill(c3);
-    ellipse(circle3X, circle3Y, circleRadius, circleRadius);
+    ellipse(circle3X, circle3Y, 2 * circleRadius, 2 * circleRadius);
     
     //Initialize the previous mouse positions
     prevMouseX = mouseX;
@@ -64,7 +64,7 @@ void draw() {
   circle1X += distance1X * easing1;
   circle1Y += distance1Y * easing1;
   fill(c1);
-  ellipse(circle1X, circle1Y, circleRadius, circleRadius);
+  ellipse(circle1X, circle1Y, 2 * circleRadius, 2 * circleRadius);
   
   //Move circle 2 with second easing percentage only if the mouse hasn't been moving in the last 2 frames
   if (mouseX == prevMouseX && prevMouseX == prevMouse2X && mouseY == prevMouseY && prevMouseY == prevMouse2Y){
@@ -72,16 +72,16 @@ void draw() {
     circle2Y += distance2Y * easing2;
   }
   fill(c2);
-  ellipse(circle2X, circle2Y, circleRadius, circleRadius);
+  ellipse(circle2X, circle2Y, 2 * circleRadius, 2 * circleRadius);
   
   
   //Linear Speed for the third (blue) circle.
-  if (distance3 >= circleRadius / 4){
+  if (distance3 >= circleRadius / 2){
     circle3X += (speed3 / frameRate) * (distance3X / distance3);
     circle3Y += (speed3 / frameRate) * (distance3Y / distance3);
   }
   fill(c3);
-  ellipse(circle3X, circle3Y, circleRadius, circleRadius);
+  ellipse(circle3X, circle3Y, 2 * circleRadius, 2 * circleRadius);
   
   //Update the prevous mouse position values
   prevMouse2X = prevMouseX;

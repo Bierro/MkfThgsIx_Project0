@@ -1,5 +1,5 @@
 //Radius of our circle
-int circleRadius = 100;
+int circleRadius = 50;
 //Position of our circle
 int circleX, circleY;
 //Easing percentage for the circle's movement
@@ -23,7 +23,7 @@ void draw() {
   if (firstFrame){
     circleX = width / 2;
     circleY = height / 2;
-    ellipse(circleX, circleY, circleRadius, circleRadius);
+    ellipse(circleX, circleY, 2 * circleRadius, 2 * circleRadius);
     firstFrame = false;
     return;
   }
@@ -35,6 +35,6 @@ void draw() {
   //Move the circle closer to the cursor using the easing percentage
   circleX += distanceX * easing;
   circleY += distanceY * easing;
-  ellipse(circleX, circleY, circleRadius, circleRadius);
+  ellipse(circleX, circleY, 2 * circleRadius, 2 * circleRadius);
 
 }

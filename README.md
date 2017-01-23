@@ -10,7 +10,7 @@ For question 3, I opted for an easing function as the one I found in Processing 
 
 For question 4, two of the circles move based on an easing function but one of them only starts moving is the mouse stays still. The last circle gets to the mouse cursor with a constant speed.
 
-For question 5, I decided to recreate Boomshine and not Agar.
+For question 5, I decided to recreate Boomshine.
 
 ## Credits and sources
 

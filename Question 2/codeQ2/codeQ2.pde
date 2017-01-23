@@ -27,9 +27,9 @@ void draw() {
     line(0, y * boxHeight, width, y * boxHeight);
   }
   
-  //Parameters of our circles' radiuses
-  int maxR = min(boxWidth, boxHeight);
-  float incrementR = maxR / (float)(nbCols * nbRows);
+  //Parameters of our circles' diameters
+  int maxDiam = min(boxWidth, boxHeight);
+  float incrementDiam = maxDiam / (float)(nbCols * nbRows);
   
   //Impose no stroke for the following circles
   strokeWeight(0);
@@ -56,6 +56,6 @@ void draw() {
     }
    
     fill(fillRed, fillGreen, fillBlue);
-    ellipse ((colIndex + 0.5f) * boxWidth, (rowIndex + 0.5f) * boxHeight, (index + 1) * incrementR, (index + 1) * incrementR);
+    ellipse ((colIndex + 0.5f) * boxWidth, (rowIndex + 0.5f) * boxHeight, (index + 1) * incrementDiam, (index + 1) * incrementDiam);
   }
 }
