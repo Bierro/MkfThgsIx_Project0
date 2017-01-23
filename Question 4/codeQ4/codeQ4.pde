@@ -2,10 +2,14 @@
 int circleRadius = 100;
 //Position of our circles
 int circle1X, circle1Y, circle2X, circle2Y, circle3X, circle3Y;
-//Easing percentages for the circles' movement
-float easing1 = 0.1, easing2 = 0.05, easing3 = 0.02;
+//Easing percentages for the two first circles' movement
+float easing1 = 0.08, easing2 = 0.12;
+//Linear speed (in pixels per second) of the third circle
+float speed3 = 1000;
 //Colors of the three circles
 color c1 = #ba4f25, c2 = #5e6387, c3 = #2534ba;
+//Previous positions of the mouse
+int prevMouseX, prevMouseY, prevMouse2X, prevMouse2Y;
 //Boolean specifying if we are drawing the first frame or not
 boolean firstFrame = true;
 
@@ -36,6 +40,11 @@ void draw() {
     fill(c3);
     ellipse(circle3X, circle3Y, circleRadius, circleRadius);
     
+    prevMouseX = mouseX;
+    prevMouseY = mouseY;
+    prevMouse2X = mouseX;
+    prevMouse2Y = mouseY;
+    
     firstFrame = false;
     return;
   }
@@ -47,19 +56,34 @@ void draw() {
   int distance2Y = mouseY - circle2Y;
   int distance3X = mouseX - circle3X;
   int distance3Y = mouseY - circle3Y;
+  float distance3 = sqrt(pow(distance3X, 2) + pow(distance3Y, 2));
   
-  //Move the circles closer to the cursor using the easing percentage
+  //Move circle 1 closer to the cursor using the easing percentage
   circle1X += distance1X * easing1;
   circle1Y += distance1Y * easing1;
   fill(c1);
   ellipse(circle1X, circle1Y, circleRadius, circleRadius);
-  circle2X += distance2X * easing2;
-  circle2Y += distance2Y * easing2;
+  
+  //Move circle 2 with easing percentage only if the mouse is not moving
+  if (mouseX == prevMouseX && prevMouseX == prevMouse2X && mouseY == prevMouseY && prevMouseY == prevMouse2Y){
+    circle2X += distance2X * easing2;
+    circle2Y += distance2Y * easing2;
+  }
   fill(c2);
   ellipse(circle2X, circle2Y, circleRadius, circleRadius);
-  circle3X += distance3X * easing3;
-  circle3Y += distance3Y * easing3;
+  
+  
+  //Linear Speed for the third (blue) circle
+  if (distance3 >= circleRadius / 4){
+    circle3X += (speed3 / frameRate) * (distance3X / distance3);
+    circle3Y += (speed3 / frameRate) * (distance3Y / distance3);
+  }
   fill(c3);
   ellipse(circle3X, circle3Y, circleRadius, circleRadius);
-
+  
+  //Update the prevous mouse position values
+  prevMouse2X = prevMouseX;
+  prevMouse2Y = prevMouseY;
+  prevMouseX = mouseX;
+  prevMouseY = mouseY;
 }
